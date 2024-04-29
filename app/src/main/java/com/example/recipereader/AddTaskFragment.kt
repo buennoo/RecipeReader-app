@@ -66,6 +66,11 @@ class AddTaskFragment : Fragment() {
         }
         return bakingInstructions
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.saveButton.setOnClickListener { saveTask() }
+    }
     private fun saveTask() {
         // Get the values from data fields on the screen
         var title: String = binding.titleInput.text.toString()

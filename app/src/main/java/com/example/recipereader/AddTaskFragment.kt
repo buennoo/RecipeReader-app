@@ -44,11 +44,28 @@ class AddTaskFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.saveButton.setOnClickListener { saveTask() }
-    }
+    private fun handleInput(description: String): List <String> {
+        val steps = description.split(";").map { it.trim() }
 
+        val bakingInstructions = mutableListOf<String>()
+
+        for (i in steps.indices) {
+            val step = steps[i]
+            val (ingredientPart, stepPart) = step.split(":", limit = 2).map { it.trim() }
+
+
+            val stepText = if (stepPart.isNotEmpty()) {
+                "${i + 1}. $stepPart: $ingredientPart"
+            } else {
+                ingredientPart
+            }
+
+            if (stepText.isNotEmpty()) {
+                bakingInstructions.add(stepText)
+            }
+        }
+        return bakingInstructions
+    }
     private fun saveTask() {
         // Get the values from data fields on the screen
         var title: String = binding.titleInput.text.toString()

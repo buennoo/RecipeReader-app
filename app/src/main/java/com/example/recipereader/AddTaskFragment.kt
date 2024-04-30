@@ -35,12 +35,12 @@ class AddTaskFragment : Fragment() {
         binding = FragmentAddTaskBinding.inflate(inflater, container, false)
         binding.titleInput.setText(args.taskToEdit?.title)
         binding.descriptionInput.setText(args.taskToEdit?.description)
-        when(args.taskToEdit?.importance){
-            IMPORTANCE.LOW -> binding.lowRadioButton.isChecked =  true
-            IMPORTANCE.NORMAL -> binding.normalRadioButton.isChecked = true
-            IMPORTANCE.HIGH -> binding.normalRadioButton.isChecked = true
-            else -> binding.normalRadioButton.isChecked = true
-        }
+//        when(args.taskToEdit?.importance){
+//            IMPORTANCE.LOW -> binding.lowRadioButton.isChecked =  true
+//            IMPORTANCE.NORMAL -> binding.normalRadioButton.isChecked = true
+//            IMPORTANCE.HIGH -> binding.normalRadioButton.isChecked = true
+//            else -> binding.normalRadioButton.isChecked = true
+//        }
         return binding.root
     }
 
@@ -75,12 +75,12 @@ class AddTaskFragment : Fragment() {
         // Get the values from data fields on the screen
         var title: String = binding.titleInput.text.toString()
         var description: String = binding.descriptionInput.text.toString()
-        val importance = when(binding.importanceGroup.checkedRadioButtonId){
-            R.id.low_radioButton -> IMPORTANCE.LOW
-            R.id.normal_radioButton -> IMPORTANCE.NORMAL
-            R.id.high_radioButton -> IMPORTANCE.HIGH
-            else -> IMPORTANCE.NORMAL
-        }
+//        val importance = when(binding.importanceGroup.checkedRadioButtonId){
+//            R.id.low_radioButton -> IMPORTANCE.LOW
+//            R.id.normal_radioButton -> IMPORTANCE.NORMAL
+//            R.id.high_radioButton -> IMPORTANCE.HIGH
+//            else -> IMPORTANCE.NORMAL
+//        }
         // Handle missing EditText input
         if(title.isEmpty())
             title = "default_title" + "${Tasks.list.size + 1}"
@@ -91,7 +91,7 @@ class AddTaskFragment : Fragment() {
             {title + description}.hashCode().toString(),
             title,
             description,
-            importance
+//            importance
         )
         if(!args.edit) {
             Tasks.addTask(taskItem)

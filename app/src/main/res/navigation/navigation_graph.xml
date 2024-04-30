@@ -43,5 +43,8 @@
         <argument
             android:name="task"
             app:argType="com.example.recipereader.Task" />
+        <action
+            android:id="@+id/action_displayTaskFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
     </fragment>
 </navigation>

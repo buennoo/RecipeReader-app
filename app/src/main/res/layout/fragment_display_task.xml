@@ -24,24 +24,26 @@
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/displayImportance"
-        app:layout_constraintEnd_toStartOf="@+id/displayEdit"
+        app:layout_constraintEnd_toStartOf="@+id/displayGoBack"
         app:layout_constraintStart_toEndOf="@+id/displayImportance"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
-        android:id="@+id/displayEdit"
+        android:id="@+id/displayGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:src="@android:drawable/ic_menu_edit"
+        android:src="@android:drawable/ic_media_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/displayImportance" />
+
     <TextView
         android:id="@+id/displayDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/displayEdit"
+        android:text="Recipe Content..."
+        app:layout_constraintEnd_toEndOf="@+id/displayGoBack"
         app:layout_constraintStart_toStartOf="@+id/displayImportance"
         app:layout_constraintTop_toBottomOf="@+id/displayImportance" />
 </androidx.constraintlayout.widget.ConstraintLayout>

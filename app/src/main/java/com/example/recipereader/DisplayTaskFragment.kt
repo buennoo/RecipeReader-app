@@ -54,5 +54,12 @@ class DisplayTaskFragment : Fragment() {
 //            }
 //            findNavController().navigate(actionEditTask)
 //        }
+
+        // added
+        binding.displayGoBack.setOnClickListener {
+            // Navigate to the AddTaskFragment with action id
+            findNavController().navigate(R.id.action_displayTaskFragment_to_taskListFragment)
+
+        }
     }
 }

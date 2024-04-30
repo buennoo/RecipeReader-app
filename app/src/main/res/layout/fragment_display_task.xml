@@ -7,41 +7,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DisplayTaskFragment">
-    <ImageView
-        android:id="@+id/displayImportance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/circle_drawable_red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/displayTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/displayImportance"
-        app:layout_constraintEnd_toStartOf="@+id/displayEdit"
-        app:layout_constraintStart_toEndOf="@+id/displayImportance"
+        app:layout_constraintEnd_toStartOf="@+id/displayGoBack"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
-        android:id="@+id/displayEdit"
+        android:id="@+id/displayGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@android:drawable/ic_menu_edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/displayImportance" />
+        android:layout_marginStart="336dp"
+        android:layout_marginTop="26dp"
+        android:src="@android:drawable/ic_media_play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/displayDescription"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/displayEdit"
-        app:layout_constraintStart_toStartOf="@+id/displayImportance"
-        app:layout_constraintTop_toBottomOf="@+id/displayImportance" />
+        android:layout_marginTop="30dp"
+        android:text="Recipe Content..."
+        app:layout_constraintTop_toBottomOf="@+id/displayTitle"
+        tools:layout_editor_absoluteX="1dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

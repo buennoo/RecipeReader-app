@@ -38,21 +38,28 @@ class DisplayTaskFragment : Fragment() {
         binding.displayTitle.text = task.title
         binding.displayDescription.text = task.description
         // select the drawable resource for the image view based on the importance of the task
-        val importanceDrawable = when(task.importance){
-            IMPORTANCE.LOW -> R.drawable.circle_drawable_green
-            IMPORTANCE.NORMAL -> R.drawable.circle_drawable_orange
-            IMPORTANCE.HIGH -> R.drawable.circle_drawable_red
-        }
-        binding.displayImportance.setImageResource(importanceDrawable)
+//        val importanceDrawable = when(task.importance){
+//            IMPORTANCE.LOW -> R.drawable.circle_drawable_green
+//            IMPORTANCE.NORMAL -> R.drawable.circle_drawable_orange
+//            IMPORTANCE.HIGH -> R.drawable.circle_drawable_red
+//        }
+//        binding.displayImportance.setImageResource(importanceDrawable)
 
-        binding.displayEdit.setOnClickListener {
-            val actionEditTask =
-                DisplayTaskFragmentDirections.actionDisplayTaskFragmentToAddTaskFragment()
-            with(actionEditTask) {
-                taskToEdit = task
-                edit = true
-            }
-            findNavController().navigate(actionEditTask)
+//        binding.displayEdit.setOnClickListener {
+//            val actionEditTask =
+//                DisplayTaskFragmentDirections.actionDisplayTaskFragmentToAddTaskFragment()
+//            with(actionEditTask) {
+//                taskToEdit = task
+//                edit = true
+//            }
+//            findNavController().navigate(actionEditTask)
+//        }
+
+        // added
+        binding.displayGoBack.setOnClickListener {
+            // Navigate to the AddTaskFragment with action id
+            findNavController().navigate(R.id.action_displayTaskFragment_to_taskListFragment)
+
         }
     }
 }

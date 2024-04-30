@@ -5,7 +5,8 @@ plugins {
     //This plugin is used to create parcelable classes in easy and fast way
     id("kotlin-parcelize")
     //This plugin is used to create safe args for navigation
-    id("androidx.navigation.safeargs")
+//    id("androidx.navigation.safeargs")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {

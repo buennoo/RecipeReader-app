@@ -44,13 +44,13 @@ class MyTaskRecyclerViewAdapter(
     override fun onBindViewHolder(holder: MyTaskRecyclerViewAdapter.ViewHolder, position: Int) {
         val task = values[position]
 
-        val importanceImage = when(task.importance){
-            IMPORTANCE.LOW -> R.drawable.circle_drawable_green
-            IMPORTANCE.NORMAL -> R.drawable.circle_drawable_orange
-            IMPORTANCE.HIGH -> R.drawable.circle_drawable_red
-        }
+//        val importanceImage = when(task.importance){
+//            IMPORTANCE.LOW -> R.drawable.circle_drawable_green
+//            IMPORTANCE.NORMAL -> R.drawable.circle_drawable_orange
+//            IMPORTANCE.HIGH -> R.drawable.circle_drawable_red
+//        }
 
-        holder.imgView.setImageResource(importanceImage)
+//        holder.imgView.setImageResource(importanceImage)
         holder.contentView.text = task.title
 
         holder.itemContainer.setOnClickListener {

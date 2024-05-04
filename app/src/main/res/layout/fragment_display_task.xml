@@ -13,8 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="sans-serif"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/displayGoBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,16 +28,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="336dp"
         android:layout_marginTop="26dp"
-        android:src="@android:drawable/ic_media_play"
+        android:background="@drawable/menu_rounded_button"
+        android:padding="10dp"
+        android:src="@android:drawable/ic_menu_revert"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/material_dynamic_neutral20"
+        tools:src="@drawable/icons8_go_back_30" />
 
     <TextView
         android:id="@+id/displayDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:padding="10dp"
         android:text="Recipe Content..."
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/displayTitle"
         tools:layout_editor_absoluteX="1dp" />
 

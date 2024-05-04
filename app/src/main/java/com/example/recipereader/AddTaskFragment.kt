@@ -44,26 +44,36 @@ class AddTaskFragment : Fragment() {
         return binding.root
     }
 
-    private fun handleInput(description: String): List <String> {
+    private fun handleDesc(description: String): List <String> {
         val steps = description.split(";").map { it.trim() }
-
         val bakingInstructions = mutableListOf<String>()
 
         for (i in steps.indices) {
             val step = steps[i]
-            val (ingredientPart, stepPart) = step.split(":", limit = 2).map { it.trim() }
+            val parts = step.split(":", limit = 2)
 
+            val ingredientPart: String
+            val stepPart: String
+
+            if (parts.size == 2) {
+                stepPart = parts[0].trim()
+                ingredientPart = parts[1].trim()
+            } else {
+                ingredientPart = step.trim()
+                stepPart = ""
+            }
 
             val stepText = if (stepPart.isNotEmpty()) {
                 "${i + 1}. $stepPart: $ingredientPart"
             } else {
-                ingredientPart
+                "${i + 1}. $ingredientPart"
             }
 
             if (stepText.isNotEmpty()) {
                 bakingInstructions.add(stepText)
             }
         }
+
         return bakingInstructions
     }
 
@@ -84,14 +94,15 @@ class AddTaskFragment : Fragment() {
 //            else -> IMPORTANCE.NORMAL
 //        }
 
-        //handle input function
-        var recipeDesc : String = handleDesc(description)
-        description = recipeDesc
+        val stepsList = handleDesc(description)
+
+        description = stepsList.joinToString(separator = "\n")
+
         // Handle missing EditText input
         if(title.isEmpty())
-            title = "default_title" + "${Tasks.list.size + 1}"
+            title = "Recipe: " + "${stepsList[0]}"
         if(description.isEmpty())
-            description = "no description"
+            description = "No recipe here"
         // Create a new Task item based on input values
         val taskItem = Task(
             {title + description}.hashCode().toString(),
@@ -110,11 +121,6 @@ class AddTaskFragment : Fragment() {
         inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken,0)
 
         findNavController().popBackStack(R.id.taskListFragment, false)
-    }
-
-    private fun handleDesc(recipeInput: String) : String{
-        var recipeInput = "test"
-        return recipeInput
     }
 
 }

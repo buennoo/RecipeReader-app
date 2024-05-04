@@ -5,7 +5,7 @@ import com.example.recipereader.Task
 
 object Tasks {
     val list: MutableList<Task> = ArrayList()
-    private val COUNT = 10
+    private val COUNT = 5
 
     init {
         for (i in 1..COUNT) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3DAFB">
+    android:background="#FFFFFF">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
@@ -32,10 +32,11 @@
         android:id="@+id/recipeReaderTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="#DBC2F1"
         android:fontFamily="@font/abril_fatface"
         android:padding="5dp"
         android:text="Recipe Reader"
+        android:textColor="@color/material_dynamic_neutral20"
         android:textSize="40sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="10dp" />

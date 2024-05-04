@@ -1,8 +1,7 @@
 package com.example.recipereader.data
-import com.example.recipereader.data.Recipe
 
 object Recipes {
-    val list: MutableList<Recipe> = ArrayList()
+    val list: MutableList<Step> = ArrayList()
     private val COUNT = 10
 
     init {
@@ -11,12 +10,12 @@ object Recipes {
         }
     }
 
-    fun addRecipe(recipe: Recipe) {
+    fun addRecipe(recipe: Step) {
         list.add(recipe)
     }
 
-    private fun createPlaceholderRecipe(position: Int): Recipe {
-        return Recipe(
+    private fun createPlaceholderRecipe(position: Int): Step {
+        return Step(
             position.toString(),
             "Recipe $position",
             listOf("Ingredient 1 for Recipe $position", "Ingredient 2 for Recipe $position"),
@@ -24,7 +23,7 @@ object Recipes {
         )
     }
 
-    fun updateRecipe(oldRecipe: Recipe?, newRecipe: Recipe) {
+    fun updateRecipe(oldRecipe: Step?, newRecipe: Step) {
         oldRecipe?.let { old ->
             val indexOfOld = list.indexOf(old)
             if (indexOfOld != -1) {
@@ -33,7 +32,7 @@ object Recipes {
         }
     }
 
-    fun getRecipeById(id: String): Recipe? {
+    fun getRecipeById(id: String): Step? {
         return list.find { it.id == id }
     }
 }

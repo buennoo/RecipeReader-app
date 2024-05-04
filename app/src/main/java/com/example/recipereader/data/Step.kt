@@ -3,7 +3,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Recipe(
+data class Step(
     val id: String,
     val title: String,
     val ingredients: List<String>,

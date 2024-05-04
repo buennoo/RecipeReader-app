@@ -5,7 +5,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Step(
     val id: String,
-    val title: String,
-    val ingredients: List<String>,
-    val steps: List<String>,
+    val content: String,
+    val showSteps: String,
 ) : Parcelable

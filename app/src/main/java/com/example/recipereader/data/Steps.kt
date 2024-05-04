@@ -1,7 +1,5 @@
 package com.example.recipereader.data
 
-import com.example.recipereader.Task
-
 object Steps {
     val list: MutableList<Step> = ArrayList()
     private val COUNT = 10
@@ -17,14 +15,18 @@ object Steps {
     }
 
     private fun createPlaceholderStep(position: Int): Step {
-        return Step(position.toString(), "Step $position", showSteps(position))
+        return Step(
+            id = position.toString(),
+            stepInfo = generateStepsList(position).toString(),
+        )
     }
 
-    private fun showSteps(position: Int): String {
-        val builder = StringBuilder()
-        for(i in 0 .. position) {
-            builder.append("\nStep")
+    fun generateStepsList(position: Int): List<String> {
+        val stepsList = mutableListOf<String>()
+        for (i in 1..position) {
+            stepsList.add("Step $i")
         }
-        return builder.toString()
+        return stepsList
     }
+
 }

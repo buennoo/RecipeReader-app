@@ -18,17 +18,37 @@ object Tasks {
     }
 
     private fun createPlaceholderTask(position: Int): Task {
-        return Task(position.toString(), "Task $position", makeDetails(position))
+       // return Task(position.toString(), "Task $position", makeDetails(position))
+        return Task(
+            id = position.toString(),
+            title = "Task $position",
+            steps = createStepsForTask(position)
+        )
     }
 
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Task: ").append(position)
-        for(i in 0 .. position) {
-            builder.append("\nMore details information here.")
+    private fun createStepsForTask(position: Int): Steps {
+        val stepsObject = Steps.apply { list.clear() }
+
+        for (i in 0..position) {
+            val stepInfo = "Step $i: Details for step $i"
+            val step = Step(
+                id = i.toString(),
+                stepInfo = stepInfo
+            )
+            stepsObject.addStep(step)
         }
-        return builder.toString()
+        return stepsObject
     }
+
+
+//    private fun makeDetails(position: Int): String {
+//        val builder = StringBuilder()
+//        builder.append("Details about Task: ").append(position)
+//        for(i in 0 .. position) {
+//            builder.append("\nMore details information here.")
+//        }
+//        return builder.toString()
+//    }
 
     fun updateTask(oldTask: Task?, newTask: Task) {
         oldTask?.let { old ->

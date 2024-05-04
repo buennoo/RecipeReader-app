@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.recipereader.data.Step
 import com.example.recipereader.databinding.FragmentDisplayTaskBinding
 
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -37,14 +37,17 @@ class DisplayTaskFragment : Fragment() {
         // get the task from the arguments and display the task details
         val task = args.task
         binding.displayTitle.text = task.title
-        binding.displayDescription.text = task.description
-        // select the drawable resource for the image view based on the importance of the task
-//        val importanceDrawable = when(task.importance){
-//            IMPORTANCE.LOW -> R.drawable.circle_drawable_green
-//            IMPORTANCE.NORMAL -> R.drawable.circle_drawable_orange
-//            IMPORTANCE.HIGH -> R.drawable.circle_drawable_red
-//        }
-//        binding.displayImportance.setImageResource(importanceDrawable)
+//        binding.displayDescription.text = task.steps
+
+        if (task.steps != null) {
+            val stepsDescription = task.steps.list.joinToString(separator = "\n") { step : Step ->
+                "${step.id}. ${step.stepInfo}"
+            }
+            binding.displayDescription.text = stepsDescription
+        } else {
+            binding.displayDescription.text = "Brak kroków"
+        }
+
 
 //        binding.displayEdit.setOnClickListener {
 //            val actionEditTask =

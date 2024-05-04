@@ -33,7 +33,7 @@ class MyTaskRecyclerViewAdapter(
     // The ViewHolder class is a container for the views in the recycler view item
     class ViewHolder(binding: FragmentTaskItemBinding) : RecyclerView.ViewHolder(binding.root)
     {
-        val imgView: ImageView = binding.itemImg
+//        val imgView: ImageView = binding.itemImg
         val contentView: TextView = binding.content
         val itemContainer: View = binding.root
         override fun toString(): String {

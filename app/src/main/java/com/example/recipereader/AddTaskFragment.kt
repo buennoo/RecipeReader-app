@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.recipereader.data.Step
+import com.example.recipereader.data.Steps
 import com.example.recipereader.data.Tasks
 import com.example.recipereader.databinding.FragmentAddTaskBinding
 
@@ -31,50 +33,59 @@ class AddTaskFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentAddTaskBinding.inflate(inflater, container, false)
         binding.titleInput.setText(args.taskToEdit?.title)
-        binding.descriptionInput.setText(args.taskToEdit?.description)
-//        when(args.taskToEdit?.importance){
-//            IMPORTANCE.LOW -> binding.lowRadioButton.isChecked =  true
-//            IMPORTANCE.NORMAL -> binding.normalRadioButton.isChecked = true
-//            IMPORTANCE.HIGH -> binding.normalRadioButton.isChecked = true
-//            else -> binding.normalRadioButton.isChecked = true
-//        }
+//        binding.descriptionInput.setText(args.taskToEdit?.description)
         return binding.root
     }
 
-    private fun handleDesc(description: String): List <String> {
+
+//    private fun handleDesc(description: String): List <String> {
+//        val steps = description.split(";").map { it.trim() }
+//        val bakingInstructions = mutableListOf<String>()
+//
+//        for (i in steps.indices) {
+//            val step = steps[i]
+//            val parts = step.split(":", limit = 2)
+//
+//            val ingredientPart: String
+//            val stepPart: String
+//
+//            if (parts.size == 2) {
+//                stepPart = parts[0].trim()
+//                ingredientPart = parts[1].trim()
+//            } else {
+//                ingredientPart = step.trim()
+//                stepPart = ""
+//            }
+//
+//            val stepText = if (stepPart.isNotEmpty()) {
+//                "${i + 1}. $stepPart: $ingredientPart"
+//            } else {
+//                "${i + 1}. $ingredientPart"
+//            }
+//
+//            if (stepText.isNotEmpty()) {
+//                bakingInstructions.add(stepText)
+//            }
+//        }
+//
+//        return bakingInstructions
+//    }
+
+    private fun handleDesc(description: String): Steps {
+        val stepsObject = Steps
         val steps = description.split(";").map { it.trim() }
-        val bakingInstructions = mutableListOf<String>()
 
-        for (i in steps.indices) {
-            val step = steps[i]
-            val parts = step.split(":", limit = 2)
-
-            val ingredientPart: String
-            val stepPart: String
-
-            if (parts.size == 2) {
-                stepPart = parts[0].trim()
-                ingredientPart = parts[1].trim()
-            } else {
-                ingredientPart = step.trim()
-                stepPart = ""
-            }
-
-            val stepText = if (stepPart.isNotEmpty()) {
-                "${i + 1}. $stepPart: $ingredientPart"
-            } else {
-                "${i + 1}. $ingredientPart"
-            }
-
-            if (stepText.isNotEmpty()) {
-                bakingInstructions.add(stepText)
-            }
+        for ((index, stepContent) in steps.withIndex()) {
+            val step = Step(
+                id = index.toString(),
+                stepInfo = stepContent,
+            )
+            println("step: $step")
+            stepsObject.addStep(step)
         }
-
-        return bakingInstructions
+        return stepsObject
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -86,29 +97,18 @@ class AddTaskFragment : Fragment() {
         var title: String = binding.titleInput.text.toString()
         var description: String = binding.descriptionInput.text.toString()
 
-
-//        val importance = when(binding.importanceGroup.checkedRadioButtonId){
-//            R.id.low_radioButton -> IMPORTANCE.LOW
-//            R.id.normal_radioButton -> IMPORTANCE.NORMAL
-//            R.id.high_radioButton -> IMPORTANCE.HIGH
-//            else -> IMPORTANCE.NORMAL
-//        }
-
         val stepsList = handleDesc(description)
-
-        description = stepsList.joinToString(separator = "\n")
 
         // Handle missing EditText input
         if(title.isEmpty())
-            title = "Recipe: " + "${stepsList[0]}"
+            title = "Recipe: " + "${stepsList}"
         if(description.isEmpty())
             description = "No recipe here"
         // Create a new Task item based on input values
         val taskItem = Task(
             {title + description}.hashCode().toString(),
             title,
-            description,
-//            importance
+            stepsList,
         )
         if(!args.edit) {
             Tasks.addTask(taskItem)

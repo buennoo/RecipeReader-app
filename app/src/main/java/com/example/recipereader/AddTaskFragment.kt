@@ -101,7 +101,7 @@ class AddTaskFragment : Fragment() {
 
         // Handle missing EditText input
         if(title.isEmpty())
-            title = "Recipe: " + "${stepsList}"
+            title = "Recipe: " + Steps.list[0].stepInfo
         if(description.isEmpty())
             description = "No recipe here"
         // Create a new Task item based on input values

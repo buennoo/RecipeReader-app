@@ -2,13 +2,13 @@ package com.example.recipereader.data
 
 object Steps {
     val list: MutableList<Step> = ArrayList()
-    private val COUNT = 10
-
-    init {
-        for (i in 1..COUNT) {
-            addStep(createPlaceholderStep(i))
-        }
-    }
+//    private val COUNT = 10
+//
+//    init {
+//        for (i in 1..COUNT) {
+//            addStep(createPlaceholderStep(i))
+//        }
+//    }
 
     fun addStep(step: Step) {
         list.add(step)

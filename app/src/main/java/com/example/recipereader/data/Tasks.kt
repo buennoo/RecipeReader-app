@@ -5,7 +5,7 @@ import com.example.recipereader.Task
 
 object Tasks {
     val list: MutableList<Task> = ArrayList()
-    private val COUNT = 5
+    private val COUNT = 3
 
     init {
         for (i in 1..COUNT) {
@@ -30,7 +30,7 @@ object Tasks {
         val stepsObject = Steps.apply { list.clear() }
 
         for (i in 0..position) {
-            val stepInfo = "Step $i: Details for step $i"
+            val stepInfo = "Step $i: Random detail"
             val step = Step(
                 id = i.toString(),
                 stepInfo = stepInfo

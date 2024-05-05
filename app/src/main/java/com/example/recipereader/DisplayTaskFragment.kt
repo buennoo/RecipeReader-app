@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipereader.data.Step
+import com.example.recipereader.data.Steps
 import com.example.recipereader.databinding.FragmentDisplayTaskBinding
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,10 +29,16 @@ class DisplayTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
     // Inflate the layout for this fragment
-            binding = FragmentDisplayTaskBinding.inflate(inflater, container, false)
-            return binding.root
+        binding = FragmentDisplayTaskBinding.inflate(inflater, container, false)
+        with(binding.stepsList) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = StepRecyclerViewAdapter(
+                Steps.list
+//                this@DisplayTaskFragment
+            ) // adapter is responsible for displaying the data
         }
-
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

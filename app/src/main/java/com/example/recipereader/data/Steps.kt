@@ -1,6 +1,10 @@
 package com.example.recipereader.data
 
-object Steps {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class Steps : Parcelable {
     val list: MutableList<Step> = ArrayList()
 //    private val COUNT = 10
 //

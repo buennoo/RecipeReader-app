@@ -33,7 +33,7 @@ class DisplayTaskFragment : Fragment() {
         with(binding.stepsList) {
             layoutManager = LinearLayoutManager(context)
             adapter = StepRecyclerViewAdapter(
-                Steps.list
+                args.task.steps.list
 //                this@DisplayTaskFragment
             ) // adapter is responsible for displaying the data
         }

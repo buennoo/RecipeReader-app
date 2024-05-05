@@ -27,7 +27,7 @@ object Tasks {
     }
 
     private fun createStepsForTask(position: Int): Steps {
-        val stepsObject = Steps.apply { list.clear() }
+        val stepsObject = Steps().apply { list.clear() }
 
         for (i in 0..position) {
             val stepInfo = "Step $i: Random detail"

@@ -9,5 +9,5 @@ data class Task(
     val id: String,
     val title: String,
     //val description: String,
-    val steps: Steps
+    val steps: Steps = Steps()
 ) : Parcelable

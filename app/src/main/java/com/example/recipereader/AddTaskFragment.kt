@@ -74,7 +74,7 @@ class AddTaskFragment : Fragment() {
 //    }
 
     private fun handleDesc(description: String): Steps {
-        val stepsObject = Steps
+        val stepsObject = Steps()
         val steps = description.split(";").map { it.trim() }
 
         for ((index, stepContent) in steps.withIndex()) {
@@ -101,7 +101,7 @@ class AddTaskFragment : Fragment() {
 
         // Handle missing EditText input
         if(title.isEmpty())
-            title = "Recipe: " + Steps.list[0].stepInfo
+            title = "Recipe: " + stepsList.list[0].stepInfo
         if(description.isEmpty())
             description = "No recipe here"
         // Create a new Task item based on input values

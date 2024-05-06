@@ -44,7 +44,7 @@
         android:backgroundTint="@color/material_dynamic_neutral20"
         android:contentDescription="Back"
         android:padding="10dp"
-        android:src="@android:drawable/ic_menu_revert"
+        android:src="@drawable/icons8_go_back_30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

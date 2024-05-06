@@ -5,6 +5,7 @@
     android:id="@+id/addTaskLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     tools:context=".AddTaskFragment">
 
     <TextView
@@ -37,10 +38,13 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_bcgd"
         android:ems="10"
         android:inputType="text"
         android:text="Recipe content..."
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleInput" />
@@ -56,6 +60,7 @@
         android:src="@android:drawable/ic_menu_save"
         android:text="Add"
         android:textColor="@color/material_dynamic_neutral20"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/label"
         app:layout_constraintStart_toEndOf="@+id/titleInput"
         app:layout_constraintTop_toBottomOf="@+id/label" />

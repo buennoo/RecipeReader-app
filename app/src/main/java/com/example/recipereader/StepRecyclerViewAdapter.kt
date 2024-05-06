@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipereader.data.Step
-import com.example.recipereader.databinding.FragmentTaskItemBinding
+import com.example.recipereader.databinding.FragmentSingleStepBinding
 
 class StepRecyclerViewAdapter(
     private val values: List<Step>,
@@ -14,7 +14,7 @@ class StepRecyclerViewAdapter(
 ) : RecyclerView.Adapter<StepRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = FragmentTaskItemBinding.inflate(
+        val binding = FragmentSingleStepBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -38,8 +38,8 @@ class StepRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    class ViewHolder(binding: FragmentTaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val contentView: TextView = binding.content
+    class ViewHolder(binding: FragmentSingleStepBinding) : RecyclerView.ViewHolder(binding.root) {
+        val contentView: TextView = binding.step
         val itemContainer: View = binding.root
 
         override fun toString(): String {

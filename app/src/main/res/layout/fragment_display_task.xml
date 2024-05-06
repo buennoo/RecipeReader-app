@@ -11,11 +11,11 @@
         android:id="@+id/labelIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="5dp"
         android:text="Ingredients:"
         app:layout_constraintBottom_toBottomOf="@+id/displayNumIngr"
         app:layout_constraintEnd_toStartOf="@+id/displayNumIngr"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/displayDescription"
         app:layout_constraintTop_toTopOf="@+id/displayNumIngr" />
 
@@ -58,7 +58,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_bcgd"
+        android:background="@drawable/rounded_display"
         android:backgroundTint="#CFEAFF"
         android:fontFamily="sans-serif"
         android:padding="10dp"
@@ -72,32 +72,42 @@
         android:id="@+id/displayNumIngr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/rounded_bcgd"
+        android:background="@drawable/rounded_display"
         android:backgroundTint="#CFEAFF"
         android:padding="10dp"
-        android:text="Num"
+        android:text="N"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayTitle" />
+        app:layout_constraintStart_toEndOf="@+id/displayDescription"
+        app:layout_constraintTop_toBottomOf="@+id/displayTitle"
+        app:layout_constraintWidth_min="40dp" />
 
     <TextView
         android:id="@+id/displayNumSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/rounded_bcgd"
+        android:background="@drawable/rounded_display"
         android:padding="10dp"
-        android:text="Num"
+        android:text="N"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayNumIngr" />
+        app:layout_constraintStart_toEndOf="@+id/displayDescription"
+        app:layout_constraintTop_toBottomOf="@+id/displayNumIngr"
+        app:layout_constraintWidth_min="40dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stepsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayDescription"
         tools:listitem="@layout/fragment_single_step" />
 
@@ -105,7 +115,8 @@
         android:id="@+id/labelSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginEnd="5dp"
         android:text="Steps:"
         app:layout_constraintBottom_toBottomOf="@+id/displayNumSteps"
         app:layout_constraintEnd_toStartOf="@+id/displayNumSteps"

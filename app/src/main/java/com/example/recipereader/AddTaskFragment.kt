@@ -39,40 +39,6 @@ class AddTaskFragment : Fragment() {
         return binding.root
     }
 
-
-//    private fun handleDesc(description: String): List <String> {
-//        val steps = description.split(";").map { it.trim() }
-//        val bakingInstructions = mutableListOf<String>()
-//
-//        for (i in steps.indices) {
-//            val step = steps[i]
-//            val parts = step.split(":", limit = 2)
-//
-//            val ingredientPart: String
-//            val stepPart: String
-//
-//            if (parts.size == 2) {
-//                stepPart = parts[0].trim()
-//                ingredientPart = parts[1].trim()
-//            } else {
-//                ingredientPart = step.trim()
-//                stepPart = ""
-//            }
-//
-//            val stepText = if (stepPart.isNotEmpty()) {
-//                "${i + 1}. $stepPart: $ingredientPart"
-//            } else {
-//                "${i + 1}. $ingredientPart"
-//            }
-//
-//            if (stepText.isNotEmpty()) {
-//                bakingInstructions.add(stepText)
-//            }
-//        }
-//
-//        return bakingInstructions
-//    }
-
     private fun handleDesc(description: String): Steps {
         val stepsObject = Steps()
         val steps = description.split(";").map { it.trim() }

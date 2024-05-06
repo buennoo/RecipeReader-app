@@ -14,8 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="11dp"
         android:fontFamily="sans-serif-medium"
         android:text="Enter title:"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,9 +78,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="19dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="sans-serif-medium"
         android:text="Enter recipe:"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleInput" />
 

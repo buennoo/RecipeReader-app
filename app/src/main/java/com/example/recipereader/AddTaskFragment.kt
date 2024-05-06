@@ -44,9 +44,17 @@ class AddTaskFragment : Fragment() {
         val steps = description.split(";").map { it.trim() }
 
         for ((index, stepContent) in steps.withIndex()) {
+            val splitStepContent = stepContent.split(":", limit = 2)
+
+            val formattedStepContent = if (splitStepContent.size == 2) {
+                "${splitStepContent[0]}\n${splitStepContent[1]}"
+            } else {
+                stepContent
+            }
+
             val step = Step(
                 id = index.toString(),
-                stepInfo = stepContent,
+                stepInfo = formattedStepContent,
             )
             println("step: $step")
             stepsObject.addStep(step)
@@ -54,22 +62,35 @@ class AddTaskFragment : Fragment() {
         return stepsObject
     }
 
-     private fun handleIngredients(description: String): Triple<String, String, String> {
+    private fun handleIngredients(description: String): Triple<String, String, String> {
         val sections = description.split(";")
-         val allIngredientsList = mutableListOf<String>()
+        val allIngredientsList = mutableListOf<String>()
 
-         for (section in sections) {
-             if (section.contains(",")) {
-                 val sectionIngredients = section.split(",").map { it.trim() }
-                 allIngredientsList.addAll(sectionIngredients)
-             }
-         }
+        for (section in sections) {
+            if (!section.contains(":")){
+                continue
+            }
+            else {
+                val parts = section.split(":", limit = 2)
 
-         val numOfIngredients = allIngredientsList.size.toString()
-         val numOfSteps = sections.size.toString()
-         val ingredients = allIngredientsList.joinToString(", ")
+                if (parts.isNotEmpty()) {
+                    val ingredientsPart = parts[0].trim()
+                    if (ingredientsPart.isNotEmpty() && !ingredientsPart.contains(",")) {
+                        allIngredientsList.add(ingredientsPart)
+                    }
+                    else if (ingredientsPart.isNotEmpty()) {
+                        val newParts = ingredientsPart.split(",")
+                        allIngredientsList.addAll(newParts)
+                    }
+                }
+            }
+        }
 
-         return Triple(ingredients, numOfIngredients, numOfSteps)
+        val numOfIngredients = allIngredientsList.size.toString()
+        val numOfSteps = sections.size.toString()
+        val ingredients = allIngredientsList.joinToString(", ")
+
+        return Triple(ingredients, numOfIngredients, numOfSteps)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

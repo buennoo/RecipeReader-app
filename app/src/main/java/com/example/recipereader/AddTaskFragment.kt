@@ -88,6 +88,24 @@ class AddTaskFragment : Fragment() {
         return stepsObject
     }
 
+     private fun handleIngredients(description: String): Triple<String, String, String> {
+        val sections = description.split(";")
+         val allIngredientsList = mutableListOf<String>()
+
+         for (section in sections) {
+             if (section.contains(",")) {
+                 val sectionIngredients = section.split(",").map { it.trim() }
+                 allIngredientsList.addAll(sectionIngredients)
+             }
+         }
+
+         val numOfIngredients = allIngredientsList.size.toString()
+         val numOfSteps = sections.size.toString()
+         val ingredients = allIngredientsList.joinToString(", ")
+
+         return Triple(ingredients, numOfIngredients, numOfSteps)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.saveButton.setOnClickListener { saveTask() }
@@ -98,6 +116,7 @@ class AddTaskFragment : Fragment() {
         var description: String = binding.descriptionInput.text.toString()
 
         val stepsList = handleDesc(description)
+        val (ingredients, numOfIngredients, numberOfSteps) = handleIngredients(description)
 
         // Handle missing EditText input
         if(title.isEmpty())
@@ -108,7 +127,10 @@ class AddTaskFragment : Fragment() {
         val taskItem = Task(
             {title + description}.hashCode().toString(),
             title,
-            stepsList,
+            ingredients,
+            numOfIngredients,
+            numberOfSteps,
+            stepsList
         )
         if(!args.edit) {
             Tasks.addTask(taskItem)

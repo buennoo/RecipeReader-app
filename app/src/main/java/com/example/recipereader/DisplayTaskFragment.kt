@@ -45,13 +45,15 @@ class DisplayTaskFragment : Fragment() {
         // get the task from the arguments and display the task details
         val task = args.task
         binding.displayTitle.text = task.title
+        binding.displayNumIngr.text = task.numOfIngredients
+        binding.displayNumSteps.text = task.numOfSteps
 //        binding.displayDescription.text = task.steps
 
         if (task.steps != null) {
-            val stepsDescription = task.steps.list.joinToString(separator = "\n") { step : Step ->
-                "${step.id}. ${step.stepInfo}"
-            }
-            binding.displayDescription.text = stepsDescription
+//            val stepsDescription = task.steps.list.joinToString(separator = "\n") { step : Step ->
+//                "${step.id}. ${step.stepInfo}"
+//            }
+            binding.displayDescription.text = task.ingredients
         } else {
             binding.displayDescription.text = "Brak kroków"
         }

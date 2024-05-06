@@ -38,23 +38,50 @@
 
     <TextView
         android:id="@+id/displayDescription"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_bcgd"
         android:fontFamily="sans-serif"
         android:padding="10dp"
         android:text="Recipe Content..."
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/displayTitle"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/displayNumSteps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayTitle" />
+
+    <TextView
+        android:id="@+id/displayNumIngr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_bcgd"
+        android:padding="10dp"
+        android:text="Num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayTitle" />
+
+    <TextView
+        android:id="@+id/displayNumSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_bcgd"
+        android:padding="10dp"
+        android:text="Num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayNumIngr" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stepsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="113dp"
-        app:layout_constraintTop_toBottomOf="@+id/displayTitle"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/displayDescription"
         tools:listitem="@layout/fragment_single_step" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

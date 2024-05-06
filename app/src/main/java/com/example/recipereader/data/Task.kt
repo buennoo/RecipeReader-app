@@ -8,6 +8,8 @@ import kotlinx.parcelize.Parcelize
 data class Task(
     val id: String,
     val title: String,
-    //val description: String,
+    val ingredients: String,
+    val numOfIngredients: String,
+    val numOfSteps: String,
     val steps: Steps = Steps()
 ) : Parcelable

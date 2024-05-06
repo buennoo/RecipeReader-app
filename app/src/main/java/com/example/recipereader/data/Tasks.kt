@@ -22,6 +22,9 @@ object Tasks {
         return Task(
             id = position.toString(),
             title = "Task $position",
+            ingredients = "none",
+            numOfIngredients = "0",
+            numOfSteps = "0",
             steps = createStepsForTask(position)
         )
     }

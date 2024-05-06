@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/displayTaskContainer"
@@ -9,12 +8,27 @@
     tools:context=".DisplayTaskFragment">
 
     <TextView
+        android:id="@+id/labelIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="5dp"
+        android:text="Ingredients:"
+        app:layout_constraintBottom_toBottomOf="@+id/displayNumIngr"
+        app:layout_constraintEnd_toStartOf="@+id/displayNumIngr"
+        app:layout_constraintStart_toEndOf="@+id/displayDescription"
+        app:layout_constraintTop_toTopOf="@+id/displayNumIngr" />
+
+    <TextView
         android:id="@+id/displayTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:text="TextView"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/alata"
+        android:text="Recipe Title"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@+id/displayGoBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,17 +39,88 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="336dp"
         android:layout_marginTop="26dp"
-        android:src="@android:drawable/ic_media_play"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/menu_rounded_button"
+        android:backgroundTint="@color/material_dynamic_neutral20"
+        android:contentDescription="Back"
+        android:padding="10dp"
+        android:src="@drawable/icons8_go_back_30"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FDE6FF"
+        tools:src="@drawable/icons8_go_back_30" />
 
     <TextView
         android:id="@+id/displayDescription"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_display"
+        android:backgroundTint="#CFEAFF"
+        android:fontFamily="sans-serif"
+        android:padding="10dp"
+        android:text="Recipe Content..."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/displayNumSteps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayTitle" />
+
+    <TextView
+        android:id="@+id/displayNumIngr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rounded_display"
+        android:backgroundTint="#CFEAFF"
+        android:padding="10dp"
+        android:text="N"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/displayDescription"
+        app:layout_constraintTop_toBottomOf="@+id/displayTitle"
+        app:layout_constraintWidth_min="40dp" />
+
+    <TextView
+        android:id="@+id/displayNumSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rounded_display"
+        android:padding="10dp"
+        android:text="N"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/displayDescription"
+        app:layout_constraintTop_toBottomOf="@+id/displayNumIngr"
+        app:layout_constraintWidth_min="40dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stepsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Recipe Content..."
-        app:layout_constraintTop_toBottomOf="@+id/displayTitle"
-        tools:layout_editor_absoluteX="1dp" />
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayDescription"
+        tools:listitem="@layout/fragment_single_step" />
+
+    <TextView
+        android:id="@+id/labelSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="103dp"
+        android:layout_marginEnd="5dp"
+        android:text="Steps:"
+        app:layout_constraintBottom_toBottomOf="@+id/displayNumSteps"
+        app:layout_constraintEnd_toStartOf="@+id/displayNumSteps"
+        app:layout_constraintStart_toEndOf="@+id/displayDescription"
+        app:layout_constraintTop_toTopOf="@+id/displayNumSteps" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

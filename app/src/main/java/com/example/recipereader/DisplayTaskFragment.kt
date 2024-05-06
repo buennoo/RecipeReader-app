@@ -7,18 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipereader.databinding.FragmentDisplayTaskBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DisplayTaskFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DisplayTaskFragment : Fragment() {
     val args: DisplayTaskFragmentArgs by navArgs()
     private lateinit var binding: FragmentDisplayTaskBinding
@@ -27,23 +18,36 @@ class DisplayTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
     // Inflate the layout for this fragment
-            binding = FragmentDisplayTaskBinding.inflate(inflater, container, false)
-            return binding.root
+        binding = FragmentDisplayTaskBinding.inflate(inflater, container, false)
+        val current = args.task
+        with(binding.stepsList) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = StepRecyclerViewAdapter(
+                current.steps.list
+                //this@DisplayTaskFragment
+            ) // adapter is responsible for displaying the data
         }
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // get the task from the arguments and display the task details
         val task = args.task
         binding.displayTitle.text = task.title
-        binding.displayDescription.text = task.description
-        // select the drawable resource for the image view based on the importance of the task
-//        val importanceDrawable = when(task.importance){
-//            IMPORTANCE.LOW -> R.drawable.circle_drawable_green
-//            IMPORTANCE.NORMAL -> R.drawable.circle_drawable_orange
-//            IMPORTANCE.HIGH -> R.drawable.circle_drawable_red
-//        }
-//        binding.displayImportance.setImageResource(importanceDrawable)
+        binding.displayNumIngr.text = task.numOfIngredients
+        binding.displayNumSteps.text = task.numOfSteps
+//        binding.displayDescription.text = task.steps
+
+        if (task.steps != null) {
+//            val stepsDescription = task.steps.list.joinToString(separator = "\n") { step : Step ->
+//                "${step.id}. ${step.stepInfo}"
+//            }
+            binding.displayDescription.text = task.ingredients
+        } else {
+            binding.displayDescription.text = "Brak kroków"
+        }
+
 
 //        binding.displayEdit.setOnClickListener {
 //            val actionEditTask =

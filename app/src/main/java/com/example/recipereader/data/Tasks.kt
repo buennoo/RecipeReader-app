@@ -5,7 +5,7 @@ import com.example.recipereader.Task
 
 object Tasks {
     val list: MutableList<Task> = ArrayList()
-    private val COUNT = 10
+    private const val COUNT = 5
 
     init {
         for (i in 1..COUNT) {
@@ -18,17 +18,41 @@ object Tasks {
     }
 
     private fun createPlaceholderTask(position: Int): Task {
-        return Task(position.toString(), "Task $position", makeDetails(position))
+       // return Task(position.toString(), "Task $position", makeDetails(position))
+        return Task(
+            id = position.toString(),
+            title = "Task $position",
+            ingredients = "none",
+            numOfIngredients = "0",
+            numOfSteps = "0",
+            steps = createStepsForTask(position)
+        )
     }
 
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Task: ").append(position)
-        for(i in 0 .. position) {
-            builder.append("\nMore details information here.")
+    private fun createStepsForTask(position: Int): Steps {
+        val stepsObject = Steps().apply { list.clear() }
+
+        for (i in 0..position) {
+            val stepInfo = "$i. Random detail"
+            val step = Step(
+                id = i.toString(),
+                stepInfo = stepInfo
+            )
+            stepsObject.addStep(step)
+            println(step)
         }
-        return builder.toString()
+        return stepsObject
     }
+
+
+//    private fun makeDetails(position: Int): String {
+//        val builder = StringBuilder()
+//        builder.append("Details about Task: ").append(position)
+//        for(i in 0 .. position) {
+//            builder.append("\nMore details information here.")
+//        }
+//        return builder.toString()
+//    }
 
     fun updateTask(oldTask: Task?, newTask: Task) {
         oldTask?.let { old ->

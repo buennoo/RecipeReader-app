@@ -1,6 +1,7 @@
 package com.example.recipereader
 
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ class MyTaskRecyclerViewAdapter(
     {
         val contentView: TextView = binding.content
         val itemContainer: View = binding.root
+        val imageBackground: ImageView = binding.itemImg
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
         }
@@ -42,6 +44,9 @@ class MyTaskRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: MyTaskRecyclerViewAdapter.ViewHolder, position: Int) {
         val task = values[position]
+
+        holder.imageBackground.background.setTint(Color.parseColor("#FDE6FF"))
+        holder.contentView.background.setTint(Color.parseColor("#FDE6FF"))
 
         holder.contentView.text = task.title
 

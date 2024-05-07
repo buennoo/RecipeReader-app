@@ -42,12 +42,9 @@ class TaskListFragment: Fragment(), ToDoListListener {
     }
 
     override fun onTaskClick(taskPosition: Int) {
-
         val actionTaskListFragmentToDisplayTaskFragment =
             TaskListFragmentDirections.actionTaskListFragmentToDisplayTaskFragment(
                 Tasks.list[taskPosition])
-
-
         findNavController().navigate(actionTaskListFragmentToDisplayTaskFragment)
     }
 

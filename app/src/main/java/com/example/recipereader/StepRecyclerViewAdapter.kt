@@ -32,7 +32,7 @@ class StepRecyclerViewAdapter(
         val stepClicked = holder.stepItem.background
 
         if(position == lastClickedPos) {
-            stepClicked.setTint(Color.GREEN)
+            stepClicked.setTint(Color.parseColor("#E3CFE5"))
         }
         else {
             stepClicked.setTint(Color.parseColor("#FDE6FF"))

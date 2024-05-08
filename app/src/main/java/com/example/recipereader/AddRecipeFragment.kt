@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.recipereader.data.Step
 import com.example.recipereader.data.Steps
-import com.example.recipereader.data.Tasks
+import com.example.recipereader.data.Recipes
 import com.example.recipereader.databinding.FragmentAddTaskBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,13 +21,13 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AddTaskFragment.newInstance] factory method to
+ * Use the [AddRecipeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddTaskFragment : Fragment() {
+class AddRecipeFragment : Fragment() {
 
     private lateinit var binding: FragmentAddTaskBinding
-    val args: AddTaskFragmentArgs by navArgs()
+    val args: AddRecipeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -111,7 +111,7 @@ class AddTaskFragment : Fragment() {
         if(description.isEmpty())
             description = "No recipe here"
         // Create a new Task item based on input values
-        val taskItem = Task(
+        val taskItem = Recipe(
             {title + description}.hashCode().toString(),
             title,
             ingredients,
@@ -120,9 +120,9 @@ class AddTaskFragment : Fragment() {
             stepsList
         )
         if(!args.edit) {
-            Tasks.addTask(taskItem)
+            Recipes.addTask(taskItem)
         }else {
-            Tasks.updateTask(oldTask = args.taskToEdit, newTask = taskItem)
+            Recipes.updateTask(oldTask = args.taskToEdit, newTask = taskItem)
         }
         // Hide the software keyboard with InputMethodManager
         val inputMethodManager: InputMethodManager =

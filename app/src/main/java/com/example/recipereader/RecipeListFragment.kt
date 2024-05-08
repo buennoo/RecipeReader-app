@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recipereader.data.Tasks
+import com.example.recipereader.data.Recipes
 import com.example.recipereader.databinding.FragmentTaskListBinding
 import com.google.android.material.snackbar.Snackbar
 
-class TaskListFragment: Fragment(), ToDoListListener {
+class RecipeListFragment: Fragment(), ToDoListListener {
     private lateinit var binding: FragmentTaskListBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,9 +24,9 @@ class TaskListFragment: Fragment(), ToDoListListener {
     // the methods of an object without explicitly calling the object itself
         with(binding.list) {
             layoutManager = LinearLayoutManager(context)
-            adapter = MyTaskRecyclerViewAdapter(
-                Tasks.list,
-                this@TaskListFragment
+            adapter = MyRecipeRecyclerViewAdapter(
+                Recipes.list,
+                this@RecipeListFragment
             ) // adapter is responsible for displaying the data
         }
         return binding.root
@@ -43,8 +43,8 @@ class TaskListFragment: Fragment(), ToDoListListener {
 
     override fun onTaskClick(taskPosition: Int) {
         val actionTaskListFragmentToDisplayTaskFragment =
-            TaskListFragmentDirections.actionTaskListFragmentToDisplayTaskFragment(
-                Tasks.list[taskPosition])
+            RecipeListFragmentDirections.actionTaskListFragmentToDisplayTaskFragment(
+                Recipes.list[taskPosition])
         findNavController().navigate(actionTaskListFragmentToDisplayTaskFragment)
     }
 
@@ -53,7 +53,7 @@ class TaskListFragment: Fragment(), ToDoListListener {
     }
 
     private fun deleteDialogPositiveClick(taskPosition: Int) {
-        Tasks.list.removeAt(taskPosition)
+        Recipes.list.removeAt(taskPosition)
         Snackbar.make(binding.root, "Task deleted", Snackbar.LENGTH_SHORT).show()
         binding.list.adapter?.notifyItemRemoved(taskPosition)
     }
@@ -66,7 +66,7 @@ class TaskListFragment: Fragment(), ToDoListListener {
     }
 
     private fun showDeleteDialog(taskPosition: Int) {
-        val taskToDelete = Tasks.list[taskPosition]
+        val taskToDelete = Recipes.list[taskPosition]
         val dialogBuilder = android.app.AlertDialog.Builder(requireContext())
         dialogBuilder.setTitle("Delete Task?")
         dialogBuilder.setMessage(taskToDelete.title)

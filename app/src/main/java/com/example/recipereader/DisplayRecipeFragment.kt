@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recipereader.data.Tasks
 import com.example.recipereader.databinding.FragmentDisplayTaskBinding
 
-class DisplayTaskFragment : Fragment(), ToDoListListener {
-    val args: DisplayTaskFragmentArgs by navArgs()
+class DisplayRecipeFragment : Fragment(), ToDoListListener {
+    val args: DisplayRecipeFragmentArgs by navArgs()
     private lateinit var binding: FragmentDisplayTaskBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +24,7 @@ class DisplayTaskFragment : Fragment(), ToDoListListener {
             layoutManager = LinearLayoutManager(context)
             adapter = StepRecyclerViewAdapter(
                 current.steps.list,
-                this@DisplayTaskFragment
+                this@DisplayRecipeFragment
             ) // adapter is responsible for displaying the data
         }
         return binding.root

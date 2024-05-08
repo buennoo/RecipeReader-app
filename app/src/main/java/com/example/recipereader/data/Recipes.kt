@@ -1,10 +1,10 @@
 package com.example.recipereader.data
 
 
-import com.example.recipereader.Task
+import com.example.recipereader.Recipe
 
-object Tasks {
-    val list: MutableList<Task> = ArrayList()
+object Recipes {
+    val list: MutableList<Recipe> = ArrayList()
     private const val COUNT = 5
 
     init {
@@ -13,13 +13,13 @@ object Tasks {
         }
     }
 
-    fun addTask(task: Task){
+    fun addTask(task: Recipe){
         list.add(task)
     }
 
-    private fun createPlaceholderTask(position: Int): Task {
+    private fun createPlaceholderTask(position: Int): Recipe {
        // return Task(position.toString(), "Task $position", makeDetails(position))
-        return Task(
+        return Recipe(
             id = position.toString(),
             title = "Task $position",
             ingredients = "none",
@@ -54,7 +54,7 @@ object Tasks {
 //        return builder.toString()
 //    }
 
-    fun updateTask(oldTask: Task?, newTask: Task) {
+    fun updateTask(oldTask: Recipe?, newTask: Recipe) {
         oldTask?.let { old ->
             val indexOfOld = list.indexOf(old)
             if(indexOfOld != -1) {

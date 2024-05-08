@@ -43,18 +43,19 @@ class AddRecipeFragment : Fragment() {
         val stepsObject = Steps()
         val steps = description.split(";").map { it.trim() }
 
-        for ((index, stepContent) in steps.withIndex()) {
-            val splitStepContent = stepContent.split(":", limit = 2)
+        // with index tworzy pare (index, stepContent)
+        for ((index, stepInfo) in steps.withIndex()) {
+            val splitStepInfo = stepInfo.split(":", limit = 2)
 
-            val formattedStepContent = if (splitStepContent.size == 2) {
-                "${splitStepContent[0]}\n${splitStepContent[1]}"
+            val changedStep = if (splitStepInfo.size == 2) {
+                "${splitStepInfo[0]}\n${splitStepInfo[1]}"
             } else {
-                stepContent
+                stepInfo
             }
 
             val step = Step(
                 id = index.toString(),
-                stepInfo = formattedStepContent,
+                stepInfo = changedStep,
             )
             println("step: $step")
             stepsObject.addStep(step)
@@ -64,7 +65,7 @@ class AddRecipeFragment : Fragment() {
 
     private fun handleIngredients(description: String): Triple<String, String, String> {
         val sections = description.split(";")
-        val allIngredientsList = mutableListOf<String>()
+        val allIngredients = mutableListOf<String>()
 
         for (section in sections) {
             if (!section.contains(":")){
@@ -72,23 +73,22 @@ class AddRecipeFragment : Fragment() {
             }
             else {
                 val parts = section.split(":", limit = 2)
-
                 if (parts.isNotEmpty()) {
                     val ingredientsPart = parts[0].trim()
                     if (ingredientsPart.isNotEmpty() && !ingredientsPart.contains(",")) {
-                        allIngredientsList.add(ingredientsPart)
+                        allIngredients.add(ingredientsPart)
                     }
                     else if (ingredientsPart.isNotEmpty()) {
                         val newParts = ingredientsPart.split(",")
-                        allIngredientsList.addAll(newParts)
+                        allIngredients.addAll(newParts)
                     }
                 }
             }
         }
 
-        val numOfIngredients = allIngredientsList.size.toString()
+        val numOfIngredients = allIngredients.size.toString()
         val numOfSteps = sections.size.toString()
-        val ingredients = allIngredientsList.joinToString(", ")
+        val ingredients = allIngredients.joinToString(", ")
 
         return Triple(ingredients, numOfIngredients, numOfSteps)
     }

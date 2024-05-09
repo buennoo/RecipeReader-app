@@ -1,6 +1,7 @@
 package com.example.recipereader
 
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipereader.databinding.FragmentTaskItemBinding
 
-class MyTaskRecyclerViewAdapter(
-    private val values: List <Task>,
+class MyRecipeRecyclerViewAdapter(
+    private val values: List <Recipe>,
     private val  eventListener: ToDoListListener
-): RecyclerView.Adapter<MyTaskRecyclerViewAdapter.ViewHolder>()
+): RecyclerView.Adapter<MyRecipeRecyclerViewAdapter.ViewHolder>()
 {
     // onCreateViewHolder creates the ViewHolder objects
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MyTaskRecyclerViewAdapter.ViewHolder {
+    ): MyRecipeRecyclerViewAdapter.ViewHolder {
         // create the view holders for the recycler view items
         // no data is bound to the views yet
         return ViewHolder(
@@ -35,13 +36,17 @@ class MyTaskRecyclerViewAdapter(
     {
         val contentView: TextView = binding.content
         val itemContainer: View = binding.root
+        val imageBackground: ImageView = binding.itemImg
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
         }
     }
 
-    override fun onBindViewHolder(holder: MyTaskRecyclerViewAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyRecipeRecyclerViewAdapter.ViewHolder, position: Int) {
         val task = values[position]
+
+        holder.imageBackground.background.setTint(Color.parseColor("#FDE6FF"))
+        holder.contentView.background.setTint(Color.parseColor("#FDE6FF"))
 
         holder.contentView.text = task.title
 

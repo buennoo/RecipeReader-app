@@ -10,8 +10,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipereader.databinding.FragmentDisplayTaskBinding
 
-class DisplayTaskFragment : Fragment() {
-    val args: DisplayTaskFragmentArgs by navArgs()
+class DisplayRecipeFragment : Fragment(), ToDoListListener {
+    val args: DisplayRecipeFragmentArgs by navArgs()
     private lateinit var binding: FragmentDisplayTaskBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,11 +23,19 @@ class DisplayTaskFragment : Fragment() {
         with(binding.stepsList) {
             layoutManager = LinearLayoutManager(context)
             adapter = StepRecyclerViewAdapter(
-                current.steps.list
-                //this@DisplayTaskFragment
+                current.steps.list,
+                this@DisplayRecipeFragment
             ) // adapter is responsible for displaying the data
         }
         return binding.root
+    }
+
+    override fun onTaskClick(taskPosition: Int) {
+        //abstract but there's no need to use it
+    }
+
+    override fun onTaskLongClick(taskPosition: Int) {
+        //abstract but there's no need to use it
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,17 +55,6 @@ class DisplayTaskFragment : Fragment() {
         } else {
             binding.displayDescription.text = "Brak kroków"
         }
-
-
-//        binding.displayEdit.setOnClickListener {
-//            val actionEditTask =
-//                DisplayTaskFragmentDirections.actionDisplayTaskFragmentToAddTaskFragment()
-//            with(actionEditTask) {
-//                taskToEdit = task
-//                edit = true
-//            }
-//            findNavController().navigate(actionEditTask)
-//        }
 
         // added
         binding.displayGoBack.setOnClickListener {

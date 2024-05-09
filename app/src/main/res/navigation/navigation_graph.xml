@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/taskListFragment"
-        android:name="com.example.recipereader.TaskListFragment"
+        android:name="com.example.recipereader.RecipeListFragment"
         android:label="TaskListFragment"
         tools:layout="@layout/fragment_task_list" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/addTaskFragment"
-        android:name="com.example.recipereader.AddTaskFragment"
+        android:name="com.example.recipereader.AddRecipeFragment"
         android:label="fragment_add_task"
         tools:layout="@layout/fragment_add_task" >
         <argument
             android:name="taskToEdit"
-            app:argType="com.example.recipereader.Task"
+            app:argType="com.example.recipereader.Recipe"
             app:nullable="true"
             android:defaultValue="@null" />
         <argument
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/displayTaskFragment"
-        android:name="com.example.recipereader.DisplayTaskFragment"
+        android:name="com.example.recipereader.DisplayRecipeFragment"
         android:label="fragment_display_task"
         tools:layout="@layout/fragment_display_task" >
         <action
@@ -42,7 +42,7 @@
             app:destination="@id/addTaskFragment" />
         <argument
             android:name="task"
-            app:argType="com.example.recipereader.Task" />
+            app:argType="com.example.recipereader.Recipe" />
         <action
             android:id="@+id/action_displayTaskFragment_to_taskListFragment"
             app:destination="@id/taskListFragment" />

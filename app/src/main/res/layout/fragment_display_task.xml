@@ -5,7 +5,7 @@
     android:id="@+id/displayTaskContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayTaskFragment">
+    tools:context=".DisplayRecipeFragment">
 
     <TextView
         android:id="@+id/labelIngredients"
@@ -26,9 +26,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/alata"
         android:text="Recipe Title"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/displayGoBack"
         app:layout_constraintEnd_toStartOf="@+id/displayGoBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,8 +58,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rounded_display"
         android:backgroundTint="#CFEAFF"
         android:fontFamily="sans-serif"
@@ -104,9 +105,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stepsList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayDescription"
         tools:listitem="@layout/fragment_single_step" />

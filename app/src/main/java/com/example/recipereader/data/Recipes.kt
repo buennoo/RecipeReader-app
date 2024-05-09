@@ -45,15 +45,6 @@ object Recipes {
     }
 
 
-//    private fun makeDetails(position: Int): String {
-//        val builder = StringBuilder()
-//        builder.append("Details about Task: ").append(position)
-//        for(i in 0 .. position) {
-//            builder.append("\nMore details information here.")
-//        }
-//        return builder.toString()
-//    }
-
     fun updateTask(oldTask: Recipe?, newTask: Recipe) {
         oldTask?.let { old ->
             val indexOfOld = list.indexOf(old)

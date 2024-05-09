@@ -44,7 +44,7 @@ class StepRecyclerViewAdapter(
             if(previousClicked != null) {
                 notifyItemChanged(previousClicked)
             }
-            //renderuje na nowo ten element (odswiezanie)
+            //renderuje na nowo ten element
             notifyItemChanged(position)
         }
 

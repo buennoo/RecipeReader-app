@@ -56,17 +56,6 @@ class DisplayRecipeFragment : Fragment(), ToDoListListener {
             binding.displayDescription.text = "Brak kroków"
         }
 
-//        binding.displayEdit.setOnClickListener {
-//            val actionEditTask =
-//                DisplayTaskFragmentDirections.actionDisplayTaskFragmentToAddTaskFragment()
-//            with(actionEditTask) {
-//                taskToEdit = task
-//                edit = true
-//            }
-//            findNavController().navigate(actionEditTask)
-//        }
-
-
         // added
         binding.displayGoBack.setOnClickListener {
             // Navigate to the AddTaskFragment with action id

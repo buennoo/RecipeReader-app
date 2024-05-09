@@ -35,30 +35,37 @@ class AddRecipeFragment : Fragment() {
     ): View? {
         binding = FragmentAddTaskBinding.inflate(inflater, container, false)
         binding.titleInput.setText(args.taskToEdit?.title)
-//        binding.descriptionInput.setText(args.taskToEdit?.description)
         return binding.root
     }
 
     private fun handleDesc(description: String): Steps {
         val stepsObject = Steps()
-        val steps = description.split(";").map { it.trim() }
-
-        // with index tworzy pare (index, stepContent)
-        for ((index, stepInfo) in steps.withIndex()) {
-            val splitStepInfo = stepInfo.split(":", limit = 2)
-
-            val changedStep = if (splitStepInfo.size == 2) {
-                "${splitStepInfo[0]}\n${splitStepInfo[1]}"
-            } else {
-                stepInfo
-            }
-
-            val step = Step(
-                id = index.toString(),
-                stepInfo = changedStep,
+        if(description.isEmpty()){
+            val tempStep = Step(
+                id = "0",
+                stepInfo = "No steps",
             )
-            println("step: $step")
-            stepsObject.addStep(step)
+            stepsObject.addStep(tempStep)
+        }
+        else {
+            val steps = description.split(";").map { it.trim() }
+
+            for ((index, stepInfo) in steps.withIndex()) {
+                val splitStepInfo = stepInfo.split(":", limit = 2)
+
+                val changedStep = if (splitStepInfo.size == 2) {
+                    "${splitStepInfo[0]}\n${splitStepInfo[1]}"
+                } else {
+                    stepInfo
+                }
+
+                val step = Step(
+                    id = index.toString(),
+                    stepInfo = changedStep,
+                )
+                println("step: $step")
+                stepsObject.addStep(step)
+            }
         }
         return stepsObject
     }
@@ -102,14 +109,21 @@ class AddRecipeFragment : Fragment() {
         var title: String = binding.titleInput.text.toString()
         var description: String = binding.descriptionInput.text.toString()
 
-        val stepsList = handleDesc(description)
-        val (ingredients, numOfIngredients, numberOfSteps) = handleIngredients(description)
+        var stepsList = handleDesc(description)
+        var (ingredients, numOfIngredients, numberOfSteps) = handleIngredients(description)
 
         // Handle missing EditText input
+        if(ingredients.isEmpty()) {
+            ingredients = "No ingredients"
+            numOfIngredients = "0"
+        }
+        if(description.isEmpty()){
+            numberOfSteps = "0"
+        }
         if(title.isEmpty())
             title = "Recipe: " + stepsList.list[0].stepInfo
-        if(description.isEmpty())
-            description = "No recipe here"
+//        if(description.isEmpty())
+//            description = "No recipe here"
         // Create a new Task item based on input values
         val taskItem = Recipe(
             {title + description}.hashCode().toString(),

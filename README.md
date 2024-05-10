@@ -1,5 +1,7 @@
-# RecipeReader
+# RecipeReader 🥧📃
 RecipeReader is an Android application developed using Kotlin in Android Studio. The app allows users to parse, analyze, and organize provided recipes in a specific format. It enhances the cooking experience by splitting recipes into individual components and presenting them in an easy-to-follow manner.
+
+![recipeReader](https://github.com/buennoo/RecipeReader-app/assets/127790828/d2307f7f-24cc-45ac-af5d-f05c524b2263)
 
 ## Features
 - **Parse Recipes:** The app accepts recipes in a specific format provided by the user and parses them into distinct parts.

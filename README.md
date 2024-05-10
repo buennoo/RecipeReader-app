@@ -10,13 +10,18 @@ RecipeReader is an Android application developed using Kotlin in Android Studio.
 
 ## How to use
 1. Add Recipe: Input your recipe in the given format:<br>
-`ingredient1, ingredient2 : instruction for those ingredients ; ingredient3, ingredient4 : next instruction ; (...)`
-2. Display added recipe.
+`ingr1, ingr2 : instruction1 ; ingr3, ingr4, ingr5 : instruction2 ; (...)`<br>
+
+for example:<br>
+> Flour 200g, cocoa 30g, baking powder 1 teaspoon, a pinch of salt: Mix the dry ingredients in a bowl; sugar 150g, 2 eggs: Whisk together in a separate bowl; milk 180ml, oil 60ml, vanilla 1 teaspoon: Add to the egg and sugar mixture; Combine the dry and wet ingredients together and mix gently; chocolate 100g: Chop and add to the batter; Fill the muffin cups to 2/3 full with the batter; Oven 180°C - Bake the muffins for 15-20 minutes.
+
+
+3. Display added recipe.
 4. Follow Instructions: Go through each step one by one, using the app to guide you.
 5. Mark Active Step: Highlight the current step you're working on.
 
 ## Technologies Used
-Kotlin
+- Kotlin
 
 ## Getting Started
 To use RecipeReader, clone this repository and open the project in Android Studio. Once set up, you can run the application on an emulator or a physical Android device.

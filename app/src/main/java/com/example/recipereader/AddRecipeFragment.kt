@@ -14,16 +14,9 @@ import com.example.recipereader.data.Steps
 import com.example.recipereader.data.Recipes
 import com.example.recipereader.databinding.FragmentAddTaskBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddRecipeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddRecipeFragment : Fragment() {
 
     private lateinit var binding: FragmentAddTaskBinding
@@ -122,9 +115,6 @@ class AddRecipeFragment : Fragment() {
         }
         if(title.isEmpty())
             title = "Recipe: " + stepsList.list[0].stepInfo
-//        if(description.isEmpty())
-//            description = "No recipe here"
-        // Create a new Task item based on input values
         val taskItem = Recipe(
             {title + description}.hashCode().toString(),
             title,

@@ -6,13 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Steps : Parcelable {
     val list: MutableList<Step> = ArrayList()
-//    private val COUNT = 10
-//
-//    init {
-//        for (i in 1..COUNT) {
-//            addStep(createPlaceholderStep(i))
-//        }
-//    }
 
     fun addStep(step: Step) {
         list.add(step)
@@ -25,7 +18,7 @@ class Steps : Parcelable {
         )
     }
 
-    fun generateStepsList(position: Int): List<String> {
+    private fun generateStepsList(position: Int): List<String> {
         val stepsList = mutableListOf<String>()
         for (i in 1..position) {
             stepsList.add("Step $i")

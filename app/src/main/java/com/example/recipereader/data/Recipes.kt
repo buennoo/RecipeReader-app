@@ -5,7 +5,7 @@ import com.example.recipereader.Recipe
 
 object Recipes {
     val list: MutableList<Recipe> = ArrayList()
-    private const val COUNT = 5
+    private const val COUNT = 8
 
     init {
         for (i in 1..COUNT) {
@@ -18,10 +18,9 @@ object Recipes {
     }
 
     private fun createPlaceholderTask(position: Int): Recipe {
-       // return Task(position.toString(), "Task $position", makeDetails(position))
         return Recipe(
             id = position.toString(),
-            title = "Task $position",
+            title = "Recipe $position",
             ingredients = "none",
             numOfIngredients = "0",
             numOfSteps = "0",

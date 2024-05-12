@@ -20,8 +20,6 @@ class RecipeListFragment: Fragment(), ToDoListListener {
     // Inflate the layout for this fragment
         binding = FragmentTaskListBinding.inflate(inflater, container, false)
     // Set the adapter and layout manager for the RecyclerView
-    // "with" is a Kotlin extension function that allows you to call
-    // the methods of an object without explicitly calling the object itself
         with(binding.list) {
             layoutManager = LinearLayoutManager(context)
             adapter = MyRecipeRecyclerViewAdapter(
